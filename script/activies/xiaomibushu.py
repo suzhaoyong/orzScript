@@ -267,7 +267,7 @@ def start():
             account,pwd,step_num = account_list[line].split('#')
             if step_num.find('-') != -1:
                 start_step, end_step = step_num.split('-')
-                step_num = str(random.randint(start_step, end_step))
+                step_num = str(random.randint(int(start_step), int(end_step)))
             push += main(account, pwd, step_num)
         try:
             if "PUSH_PLUS_TOKEN" in os.environ:
