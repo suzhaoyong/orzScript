@@ -270,7 +270,8 @@ def start():
                 step_num = str(random.randint(start_step, end_step))
             push += main(account, pwd, step_num)
         try:
-            push_pushplus('ce85b205fb1f4e9f80a5825ef6f2a889', push)
+            if "PUSH_PLUS_TOKEN" in os.environ:
+                push_pushplus(os.environ['PUSH_PLUS_TOKEN'], push)
         except:
             print('推送出错')
     else:
