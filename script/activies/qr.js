@@ -6,6 +6,8 @@
 青龙变量  多账户用@
 export qrck='Bearer eyJhbG...... @  Bearer eyJhbG......'
 
+[task_local]
+21 7 * * * qr.js, tag=奇瑞, img-url=circles.hexagongrid.fill.system, enabled=true
 [Script]
 cron "21 7 * * *" script-path=qr.js,tag=奇瑞
 
