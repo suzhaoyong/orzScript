@@ -19,7 +19,7 @@ request('https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromot
             var title = game.title
             var desp = game.description
             var coverImg = game.keyImages[1].url
-            var shopUrl = "https://www.epicgames.com/store/zh-CN/p/"; + game.productSlug
+            var shopUrl = "https://www.epicgames.com/store/zh-CN/p/" + game.productSlug
             sendText("今日限免：" + title + "n" + desp + "n" + "领取地址：" + shopUrl + image(coverImg))
         }
     }
