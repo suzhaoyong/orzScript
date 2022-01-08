@@ -17,11 +17,11 @@ request('https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromot
         var discountPercentage = discountType.discountSetting.discountPercentage
         if (discountPercentage == 0) {
             var title = game.title
-            var desp = game.description
+            var description = game.description
             var coverImg = game.keyImages[1].url
             var shopUrl = "https://www.epicgames.com/store/zh-CN/p/" + game.productSlug
             var endDate = time_js(discountType.endDate).format('MM-DD HH:mm')
-            sendText("今日限免：" + title + "n" + desp + "n" + "截止日期：" + endDate + "n" + "领取地址：" + shopUrl + image(coverImg))
+            sendText("今日限免：" + title + "n" + description + "\n" + "截止日期：" + endDate + "\n" + "领取地址：" + shopUrl + "\n" +image(coverImg))
         }
     }
 
