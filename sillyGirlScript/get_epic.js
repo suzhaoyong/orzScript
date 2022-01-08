@@ -29,6 +29,7 @@ request('https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromot
 
 
 function time_js(date) {
+    if (typeof date === 'string') date = new Date(date);
     return ({
         format: function (fmt) {
             let ret;
