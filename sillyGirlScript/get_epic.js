@@ -2,7 +2,7 @@
 // [rule: Epic]
 // [cron: 30 11 * * *]
 /* 获取 epic 免费游戏 更多信息请查看 https://github.com/suzhaoyong/orzScript */
-request('https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromotions?locale=zh-CN&;;country=CN&allowCountries=CN', function (error, response, body) {
+request('https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromotions?locale=zh-CN&country=CN&allowCountries=CN', function (error, response, body) {
     var data = JSON.parse(body)
     var games = data.data.Catalog.searchStore.elements
 
@@ -20,8 +20,34 @@ request('https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromot
             var desp = game.description
             var coverImg = game.keyImages[1].url
             var shopUrl = "https://www.epicgames.com/store/zh-CN/p/" + game.productSlug
-            sendText("今日限免：" + title + "n" + desp + "n" + "领取地址：" + shopUrl + image(coverImg))
+            var endDate = time_js(discountType.endDate).format('MM-DD HH:mm')
+            sendText("今日限免：" + title + "n" + desp + "n" + "截止日期：" + endDate + "n" + "领取地址：" + shopUrl + image(coverImg))
         }
     }
 
 })
+
+
+function time_js(date) {
+    return ({
+        format: function (fmt) {
+            let ret;
+            const opt = {
+                "Y+": date.getFullYear().toString(),        // 年
+                "M+": (date.getMonth() + 1).toString(),     // 月
+                "D+": date.getDate().toString(),            // 日
+                "H+": date.getHours().toString(),           // 时
+                "m+": date.getMinutes().toString(),         // 分
+                "S+": date.getSeconds().toString()          // 秒
+                // 有其他格式化字符需求可以继续添加，必须转化成字符串
+            };
+            for (let k in opt) {
+                ret = new RegExp("(" + k + ")").exec(fmt);
+                if (ret) {
+                    fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+                };
+            };
+            return fmt;
+        }
+    })
+}
