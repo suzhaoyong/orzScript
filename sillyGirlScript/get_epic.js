@@ -2,6 +2,7 @@
 // [rule: Epic]
 // [cron: 30 11 * * *]
 /* 获取 epic 免费游戏
+    更多信息请查看 https://github.com/suzhaoyong/orzScript
  */
 request('https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromotions?locale=zh-CN&;;country=CN&allowCountries=CN', function (error, response, body) {
     var data = JSON.parse(body)
