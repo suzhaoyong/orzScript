@@ -5,7 +5,7 @@
 下面是返利链接
 22年京享紅包 尽享年货
 每天可玩3次，最高9999元任你抢
-https://u.jd.com/SCudcul
+https://u.jd.com/SLusrUe
 23:/￥8583L3zF9sDqV￥，☕抢紅包，购痛快~最高9999元紅包等你来！
 跳转到app 可查看助力情况
 */
@@ -48,7 +48,7 @@ let nowTime = new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*
     if ($.isNode()) await notify.sendNotify($.name + '活动已结束', `请删除此脚本\n咱江湖再见`);
     return
   }
-    $.shareCode = 'SCudcul'
+    $.shareCode = 'SLusrUe'
   for (let i = 0; i < cookiesArr.length; i++) {
     cookie = cookiesArr[i];
     if (cookie) {
