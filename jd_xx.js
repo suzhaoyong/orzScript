@@ -41,9 +41,9 @@ if ($.isNode()) {
     cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-const author_codes = ['oeD5W6oKZGNBZBSrCpeJ9zpivyWF']
+const author_codes = []
 const self_code = []
-let pool = ['-ryUX_1YNTJCMRLBGdLE80Da97GeQX3j', '-ryULfV_MyQ2NHOaOIOdu0atJEVMsmo']
+let pool = []
 !(async () => {
     // console.log('内部互助城城现在改为优先助力池子!(作者只吃第一个CK,其余内部!) 请查看群内频道通知!,5s后开始!')
     // await $.wait(5000)
