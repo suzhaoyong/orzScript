@@ -41,9 +41,9 @@ if ($.isNode()) {
     cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-const author_codes = ['oeD9UaQEYm1CYRGrCpeJ95PhSEZ5'].sort(() => 0.5 - Math.random())
+const author_codes = ['oeD5W6oKZGNBZBSrCpeJ9zpivyWF']
 const self_code = []
-let pool = []
+let pool = ['-ryUX_1YNTJCMRLBGdLE80Da97GeQX3j', '-ryULfV_MyQ2NHOaOIOdu0atJEVMsmo']
 !(async () => {
     // console.log('内部互助城城现在改为优先助力池子!(作者只吃第一个CK,其余内部!) 请查看群内频道通知!,5s后开始!')
     // await $.wait(5000)
@@ -308,7 +308,7 @@ function shareCodesFormat() {
         // }
         if ($.index == 1) {
             console.log('首个帐号,助力作者和池子')
-            //$.newShareCodes = [...new Set([...author_codes, ...pool, ...$.newShareCodes])]
+            $.newShareCodes = [...new Set([...author_codes, ...pool, ...$.newShareCodes])]
         } else {
             // console.log('非首个帐号,助力池子')
             // $.newShareCodes = [...new Set([...$.newShareCodes,...pool])]
