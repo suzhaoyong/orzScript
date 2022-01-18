@@ -1,4 +1,5 @@
-/* 搜索token */
+/* 搜索token 
+入口：商城，签到，我的 卡券*/
 
 const $ = new Env('长安汽车');
 var request = require("request");
