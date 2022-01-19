@@ -80,6 +80,7 @@ let curRound = 1
                 continue
             }
             roundList =[]
+            if (i == 0 ) continue
             try {
                 await main()
             } catch (e) {
@@ -158,8 +159,9 @@ async function main() {
     */
     if(fcwbinviter && fcwbinviteCode){
         console.log(`去助力:${fcwbinviter}`);
-        await takeRequest(`happyDigHelp`,`{"linkId":"${link}","inviter":"${fcwbinviter}","inviteCode":"${fcwbinviteCode}"}`);
-        await $.wait(2000);
+        let res = await takeRequest(`happyDigHelp`,`{"linkId":"${link}","inviter":"${fcwbinviter}","inviteCode":"${fcwbinviteCode}"}`);
+        console.log(res)
+        await $.wait(30000);
         //console.log(`助力结果：${JSON.stringify(HelpInfo)}`);
     }
     /*
