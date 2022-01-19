@@ -264,7 +264,7 @@ async function takeRequest(functionId,bodyInfo,h5stFlag = false){
                 console.log(data);
                 //$.logErr(e, resp)
             } finally {
-                resolve(data.data || {});
+                resolve(data|| {});
             }
         })
     })
