@@ -161,18 +161,20 @@ async function main() {
         await takeRequest(`happyDigHelp`,`{"linkId":"${link}","inviter":"${fcwbinviter}","inviteCode":"${fcwbinviteCode}"}`);
         //console.log(`助力结果：${JSON.stringify(HelpInfo)}`);
     }
+    /*
     $.freshFlag = false;
-    // if($.index === 1){
-    //     fcwbinviter = homeInfo.markedPin;
-    //     fcwbinviteCode = homeInfo.inviteCode;
-    // }
-    // await doTask();
+    if($.index === 1){
+        fcwbinviter = homeInfo.markedPin;
+        fcwbinviteCode = homeInfo.inviteCode;
+    }
+    await doTask();
     if($.freshFlag){
         await $.wait(2000);
         homeInfo = await takeRequest(`happyDigHome`,`{"linkId":"${link}"}`,true);
     }
     let blood = homeInfo.blood;
     console.log(`当前有${blood}滴血`);
+    */
 }
 async function doTask(){
     let taskList = await takeRequest(`apTaskList`,`{"linkId":"${link}"}`);
