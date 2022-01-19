@@ -159,6 +159,7 @@ async function main() {
     if(fcwbinviter && fcwbinviteCode){
         console.log(`去助力:${fcwbinviter}`);
         await takeRequest(`happyDigHelp`,`{"linkId":"${link}","inviter":"${fcwbinviter}","inviteCode":"${fcwbinviteCode}"}`);
+        await $.wait(2000);
         //console.log(`助力结果：${JSON.stringify(HelpInfo)}`);
     }
     /*
@@ -169,7 +170,6 @@ async function main() {
     }
     await doTask();
     if($.freshFlag){
-        await $.wait(2000);
         homeInfo = await takeRequest(`happyDigHome`,`{"linkId":"${link}"}`,true);
     }
     let blood = homeInfo.blood;
