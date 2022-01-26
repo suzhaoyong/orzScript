@@ -82,13 +82,13 @@ let notify, allMessage = '';
                 redPacketId: process.env.ANGRY_KOI_RED_PACKET_ID,
                 assist_full: false,
                 id: -1,
-                cookie: process.env.ANGRY_KOI_COOKIE,
+                cookie: process.env.ANGRY_KOI_COOKIE || '',
                 helpCount: 0
             }
             
             // await getHelpInfoForCk(cookieIndex, cookiesArr[cookieIndex])
             if (help) {
-                while (tools.length > 0 && remainingTryCount > 0) {
+                while (tools.length > 0 && remainingTryCount > 0 && !help.assist_full) {
                     console.info('')
 
                     // 从互助列表末尾取出一个账号，用于尝试助力第一个需要互助的账号
@@ -109,7 +109,7 @@ let notify, allMessage = '';
 
                     console.debug(`尝试用 ${tool.id} 账号助力 ${help.id} 账号，用于互助的账号剩余 ${tools.length}`)
 
-                    // await helpThisUser(help, tool)
+                    await helpThisUser(help, tool)
                     if (!tool.assisted) {
                         // 如果没有助力成功，则放入互助列表头部
                         tools.unshift(tool)
@@ -129,7 +129,7 @@ let notify, allMessage = '';
                 console.info(`账号 ${cookieIndex} 获取信息失败，具体原因见上一行，将尝试下一个账号`)
             }
 
-            await appendRewardInfoToNotify(cookieIndex, cookiesArr[cookieIndex])
+            // await appendRewardInfoToNotify(cookieIndex, cookiesArr[cookieIndex])
         } catch (error) {
             // 额外捕获异常
             console.error(`处理当前账号 ${cookieIndex} 时抛异常了，错误为${error}，捕获该异常，确保其他账号可以继续执行~`)
