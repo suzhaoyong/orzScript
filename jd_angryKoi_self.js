@@ -73,6 +73,10 @@ let notify, allMessage = '';
         let cookieIndex = cookieIndexOrder[helpIndex]
 
         try {
+            if (!process.env.ANGRY_KOI_RED_PACKET_ID) {
+                console.log('未配置 ANGRY_KOI_RED_PACKET_ID 变量')
+                return;
+            }
             // 按需获取账号的锦鲤信息
             let help =  {
                 redPacketId: process.env.ANGRY_KOI_RED_PACKET_ID,
