@@ -12,7 +12,7 @@ ttlhd=''    多账号@隔开
 
 
 [task_local]
-20 0 * * * http://47.101.146.160/scripts/ttl.js, tag=太太乐, img-url=circles.hexagongrid.fill.system, enabled=true
+20 0 * * * http://47.101.146.160/scripts/tttl.js, tag=太太乐, img-url=circles.hexagongrid.fill.system, enabled=true
 */
 
 
@@ -47,7 +47,7 @@ var timestamp = Math.round(new Date().getTime()/1000).toString();
           $.index = i + 1;
         
           console.log(`\n开始【太太乐${$.index}】`)
-          console.log(`\n如需抓token 打开微信小程序 太太乐餐饮服务\n请求头里面token\n 多账号@隔开\n如需换话费 下载太太乐APP积分兑换话费\n如果没库存了 自己隔天再看`)
+          console.log(`第一次注册必须先登录一次小程序绑定微信然后用接口\n不会抓包的手残智力障碍的接口获取token\nhttp://47.101.146.160/ttl.php?zh=手机号码&mm=密码\n如需换话费 下载太太乐APP积分兑换话费\n如果没库存了 自己隔天再看`)
          
 await sign()
 await blog()
@@ -73,7 +73,11 @@ await my()
                 $.index = k + 1;
  
           console.log(`\n开始【太太乐${$.index}】`)
-          console.log(`\n如需抓token 打开微信小程序 太太乐餐饮服务\n请求头里面token\n 多账号@隔开\n如需换话费 下载太太乐APP积分兑换话费\n如果没库存了 自己隔天再看`)
+          console.log(`第一次注册必须先登录一次小程序绑定微信然后用接口\n不会抓包的手残智力障碍的接口获取token\nhttp://47.101.146.160/ttl.php?zh=手机号码&mm=密码\n如需换话费 下载太太乐APP积分兑换话费\n如果没库存了 自己隔天再看`)
+          await kcjk(633)
+          await kcjk(631)
+          await kcjk(62)
+          await kcjk(61)
 await sign()
 await blog()
 await my() 
@@ -101,14 +105,71 @@ $.log(ttlhd)
  
 }
 }
+async function kcjk(giftId){
+ return new Promise((resolve) => {
+     
+ let nm = {
+   		url: `https://www.ttljf.com/ttl_site/giftApi.do?giftId=${giftId}&mthd=giftDetail&sign=569aeaef6da7470ae38e4907aab980da&userId=`,
+   		headers:{
+   		    'User-Agent':' Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
+   		    
+   		}
+}
+   $.get(nm,async(error, response, data) =>{
+ 
+    try{
+   aa = data.match(/{"code":"0000","message":"成功","url":".*","gifts":{"brand":"","collectId":0,"description":"/)      
+   bb= data.match(/","exchangeLimit":.+/)     
+        cc=aa+bb
 
+         
+        const result = JSON.parse(cc)
+         $.msg(`${result.gifts.giftName} 需要积分：${result.gifts.price} 库存：${result.gifts.stockAmount}`)
+       //$.log(`${result.gifts.giftName} 需要积分：${result.gifts.price} 库存：${result.gifts.stockAmount}`)
+}catch(e) {
+          $.logErr(e, response);
+      } finally {
+        resolve();
+      } 
+    })
+   })
+  }
 
+async function dx(){
+ return new Promise((resolve) => {
+     
+ let nm = {
+   		url: 'https://www.ttljf.com/ttl_site/giftApi.do?giftId=633&mthd=giftDetail&sign=569aeaef6da7470ae38e4907aab980da&userId=',
+   		headers:{
+   		    'User-Agent':' Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
+   		    
+   		}
+}
+   $.get(nm,async(error, response, data) =>{
+     //$.log(data)  
+    try{
+   aa = data.match(/{"code":"0000","message":"成功","url":".*","gifts":{"brand":"","collectId":0,"description":"/)      
+   bb= data.match(/","exchangeLimit":.+/)     
+        cc=aa+bb
 
+         $.log(cc)
+        const result = JSON.parse(cc)
+        
+        //$.log(result.gifts.giftName+' 需要积分：'result.gifts.price+' 库存：'+result.gifts.stockAmount)
+}catch(e) {
+          $.logErr(e, response);
+      } finally {
+        resolve();
+      } 
+    })
+   })
+  }
 
 
 
 async function blog(){
  return new Promise((resolve) => {
+ setTimeout(function(){
      body = {"id":"A35D575F-C004-4717-AABC-ED9D1979C3FA","type":"blog"}
      request.put(ttl('Common/share/A35D575F-C004-4717-AABC-ED9D1979C3FA/blog',body), function(error, response, body) {
 try {
@@ -132,11 +193,13 @@ try {
         resolve(data);
       }
     });
+	},5000)
     })
     }
 
 async function sign(){
  return new Promise((resolve) => {
+ setTimeout(function(){
     request.put(ttl('user/api/sign/today',''), function(error, response, body) {
      try {
         if (error) {
@@ -161,13 +224,14 @@ async function sign(){
         resolve(data);
       }
     });
+	},5000)
     })
     }
 function my() {
  return new Promise((resolve) => {
   
 $.get(ttlget('user/api/my'), async (err, resp, data) => {
-       
+    setTimeout(function(){
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -191,6 +255,7 @@ $.get(ttlget('user/api/my'), async (err, resp, data) => {
       } finally {
         resolve(data);
       }
+	  },5000)
     })
   })
 }
