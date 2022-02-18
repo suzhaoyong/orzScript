@@ -147,7 +147,7 @@ async function ttl_login() {
                 console.log('登录信息 ' + data.message);
                 message += `\n【账号】 ${$.userName}(${data.user.mobile}) \n【登录信息】 ${data.message} \n【积分】 ${$.integral}`;
             } catch (e) {
-                $.logErr(e, resp)
+                $.logErr(e, response)
             } finally {
                 resolve();
             }
@@ -181,7 +181,7 @@ async function ttl_dh() {
                 console.log(`兑换商品 ${stockName} 兑换结果：${data.message}`);
                 message += `\n【兑换商品】 ${stockName} \n【兑换结果】 ${data.message}`;
             } catch (e) {
-                $.logErr(e, resp)
+                $.logErr(e, response)
             } finally {
                 resolve();
             }
