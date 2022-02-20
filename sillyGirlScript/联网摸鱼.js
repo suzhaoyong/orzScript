@@ -1,0 +1,2 @@
+// [rule: 摸鱼]
+sendText(image("https://s3.bmp.ovh/imgs/2021/12/2627c2f0f744eaa8.jpeg") + "\n" + request("https://vps.suyiboke.com/api/face/my").replace(/:/g, "").replace("自己的", "自己的。\n").replace("上班是", "\n上班是").replace(/<br\/>/g, "\n"))
