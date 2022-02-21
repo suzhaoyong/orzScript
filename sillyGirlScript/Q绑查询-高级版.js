@@ -16,8 +16,10 @@ function main() {
             var lol = (data.lol)
             var wb = (data.wb)
             sendText("QQ："+qq + "\n归属地："+phonediqu+"\nLOL："+lol+"\n微博："+wb)
+            return;
         } else {
             sendText("查无此人")
+            return;
         }
     }
     /*
